@@ -1,0 +1,736 @@
+/* ============================================================
+   Leaderboard — base styles with a fun, colorful vibe
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Accessibility: visible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 3px solid #f06595;
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link — visible on focus for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: #845ef7;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 700;
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+body {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  /* Warm coral-to-violet gradient that complements the header */
+  background: linear-gradient(160deg, #ffecd2 0%, #fcb69f 30%, #a18cd1 70%, #fbc2eb 100%);
+  min-height: 100vh;
+  color: #222;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+
+header {
+  background: linear-gradient(90deg, #ff6b6b, #f06595, #cc5de8, #845ef7);
+  color: #fff;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.header-title-group {
+  flex: 1;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.header-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#session-date {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Share button */
+#share-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 700;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, transform 0.1s;
+  backdrop-filter: blur(4px);
+}
+
+#share-btn:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-1px);
+}
+
+#share-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Main layout — full screen, no max-width cap
+   ============================================================ */
+
+main {
+  width: 100%;
+  padding: 1.5rem 2rem;
+}
+
+/* ============================================================
+   Toolbar: add form + search, side by side
+   ============================================================ */
+
+#toolbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   Add-student form
+   ============================================================ */
+
+#add-form {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 16rem;
+}
+
+#student-name {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  border: 3px solid #cc5de8;
+  border-radius: 20px;
+  font-family: inherit;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#student-name:focus {
+  border-color: #845ef7;
+  box-shadow: 0 0 0 3px rgba(132,94,247,0.25);
+}
+
+#add-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f06595, #cc5de8);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+
+#add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+}
+
+#add-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Search
+   ============================================================ */
+
+#search-wrap {
+  flex: 1;
+  min-width: 12rem;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 3px solid #74c0fc;
+  border-radius: 20px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#search-input:focus {
+  border-color: #339af0;
+  box-shadow: 0 0 0 3px rgba(51,154,240,0.25);
+}
+
+/* "No results" placeholder row */
+.no-results {
+  text-align: center;
+  padding: 1.5rem;
+  color: #888;
+  font-size: 1rem;
+  font-style: italic;
+  background: rgba(255,255,255,0.6);
+  border-radius: 16px;
+  list-style: none;
+}
+
+/* ============================================================
+   Error message — hidden by default (Requirement 12.4)
+   ============================================================ */
+
+#error-message {
+  display: none;
+  color: #c92a2a;
+  background: #ffe3e3;
+  border: 2px solid #fa5252;
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   Student list
+   ============================================================ */
+
+#student-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#student-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #fff;
+  border: 3px solid #dee2e6;
+  border-radius: 16px;
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+#student-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Top-3 rank highlights (Requirement 7.1–7.4) */
+#student-list li.rank-1 {
+  border-color: #FFD700;
+  background: linear-gradient(135deg, #fffde7, #fff9c4);
+  box-shadow: 0 4px 16px rgba(255,215,0,0.4);
+}
+
+#student-list li.rank-2 {
+  border-color: #C0C0C0;
+  background: linear-gradient(135deg, #f9f9f9, #ececec);
+  box-shadow: 0 4px 16px rgba(192,192,192,0.4);
+}
+
+#student-list li.rank-3 {
+  border-color: #CD7F32;
+  background: linear-gradient(135deg, #fdf5ec, #fde8cc);
+  box-shadow: 0 4px 16px rgba(205,127,50,0.35);
+}
+
+/* ============================================================
+   Top row: rank · name · badges · progress bar · pts
+   ============================================================ */
+
+.row-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.rank-position {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.student-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 12rem;
+  /* Negative margin pulls the badge area closer to the name */
+  margin-right: -0.3rem;
+}
+
+/* ============================================================
+   Badge area — pills in the top row
+   ============================================================ */
+
+.badge-area {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 6.8rem;
+}
+
+/* Individual badge pill */
+.badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--badge-bg, #fff9c4);
+  border: 2.5px solid var(--badge-color, #fab005);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem 0.3rem 0.6rem;
+  font-size: 1.35rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.14);
+  cursor: default;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.badge:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+.badge-emoji {
+  line-height: 1;
+}
+
+/* Remove button — hidden until badge is hovered */
+.badge-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  background: var(--badge-color, #fab005);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.65rem;
+  color: #fff;
+  padding: 0;
+  line-height: 1;
+  font-family: inherit;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.15s, transform 0.15s;
+  margin-left: 0.1rem;
+}
+
+.badge:hover .badge-remove-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.badge-remove-btn:hover {
+  background: #c92a2a;
+}
+
+/* Pop-in animation for newly assigned badges */
+@keyframes badgePop {
+  0%   { transform: scale(0.3) rotate(-15deg); opacity: 0; }
+  60%  { transform: scale(1.3) rotate(5deg);  opacity: 1; }
+  100% { transform: scale(1)   rotate(0deg);  opacity: 1; }
+}
+
+.badge-pop {
+  animation: badgePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ============================================================
+   Badge picker popover
+   ============================================================ */
+
+.badge-picker {
+  display: none;
+  margin-top: 0.4rem;
+  background: #fff;
+  border: 2px solid #da77f2;
+  border-radius: 16px;
+  padding: 0.6rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+
+.badge-picker-header {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #862e9c;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.badge-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.badge-option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  background: var(--badge-bg, #f8f0fc);
+  border: 2px solid var(--badge-color, #da77f2);
+  border-radius: 10px;
+  padding: 0.35rem 0.2rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.badge-option-btn:hover:not(:disabled) {
+  transform: scale(1.12);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.badge-option-emoji {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.badge-option-name {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #444;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 3.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badge-option-count {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: var(--badge-color, #862e9c);
+  min-height: 0.8rem;
+}
+
+.badge-option-btn.badge-option-maxed {
+  opacity: 0.3;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.badge-option-btn.badge-option-maxed:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Progress bar stretches to fill remaining space.
+   margin-left gives extra breathing room after the badge area
+   so badges never overlap the bar even when all 3 slots are filled. */
+.progress-wrap {
+  flex: 1;
+  height: 14px;
+  background: #e9ecef;
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 4rem;
+  margin-left: 2rem;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #74c0fc, #4dabf7, #339af0, #228be6, #845ef7);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 4px;
+}
+
+/* Total points — pinned to the far right */
+.student-points {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #845ef7;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 4.5rem;
+  text-align: right;
+}
+
+/* ============================================================
+   Bottom row: point buttons · badge · edit · delete — centered
+   ============================================================ */
+
+.row-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding-top: 0.25rem;
+  border-top: 1px dashed rgba(0,0,0,0.08);
+}
+
+/* ============================================================
+   Point buttons
+   ============================================================ */
+
+.point-btn {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  font-weight: 700;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.point-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.point-btn:active {
+  transform: scale(0.95);
+}
+
+/* Color-code each button */
+.point-btn[data-delta="1"] {
+  background: #d3f9d8;
+  border-color: #40c057;
+  color: #2f9e44;
+}
+
+.point-btn[data-delta="-1"] {
+  background: #ffe3e3;
+  border-color: #fa5252;
+  color: #c92a2a;
+}
+
+.point-btn[data-delta="5"] {
+  background: #fff3bf;
+  border-color: #fab005;
+  color: #e67700;
+}
+
+/* ============================================================
+   Edit / Delete / Badge buttons
+   ============================================================ */
+
+.edit-btn,
+.delete-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.edit-btn {
+  background: #d0ebff;
+  color: #1971c2;
+  border-color: #74c0fc;
+}
+
+.delete-btn {
+  background: #ffe3e3;
+  color: #c92a2a;
+  border-color: #fa5252;
+}
+
+.assign-badge-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 2px solid #da77f2;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  background: #f3d9fa;
+  color: #862e9c;
+}
+
+.assign-badge-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+
+/* ============================================================
+   Inline edit input
+   ============================================================ */
+
+.edit-name-input {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border: 2px solid #74c0fc;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 6rem;
+  outline: none;
+}
+
+.edit-name-input:focus {
+  border-color: #339af0;
+  box-shadow: 0 0 0 3px rgba(51,154,240,0.2);
+}
+
+.confirm-edit-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 700;
+  background: #d0ebff;
+  color: #1971c2;
+  border: 2px solid #74c0fc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.confirm-edit-btn:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   Storage warning toast — non-blocking, auto-dismisses (Requirement 9.2)
+   ============================================================ */
+
+#storage-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(2rem);
+  background: linear-gradient(135deg, #f06595, #cc5de8);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+#storage-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* ============================================================
+   Share toast — confirmation after copying link
+   ============================================================ */
+
+#share-toast {
+  position: fixed;
+  bottom: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(2rem);
+  background: linear-gradient(135deg, #40c057, #20c997);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1001;
+}
+
+#share-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}

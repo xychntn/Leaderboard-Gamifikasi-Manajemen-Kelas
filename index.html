@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏆 Star Board — Live Class Leaderboard</title>
+  <!-- Accessibility: high-contrast focus styles, skip link -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Skip navigation for screen readers -->
+  <a href="#student-list" class="skip-link">Skip to leaderboard</a>
+
+  <header role="banner">
+    <div class="header-inner">
+      <div class="header-title-group">
+        <h1 id="board-title" title="Click to edit title" tabindex="0" role="button"
+            aria-label="Leaderboard title — click to edit">🏆 Star Board</h1>
+        <p class="header-subtitle">Live Class Leaderboard</p>
+      </div>
+      <p id="session-date" aria-label="Today's date"></p>
+      <!-- Share button -->
+      <button id="share-btn" aria-label="Copy shareable link to clipboard">
+        🔗 Share
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div id="toolbar" role="search">
+      <form id="add-form" aria-label="Add a new student">
+        <label for="student-name" class="sr-only">Student name</label>
+        <input id="student-name" type="text" placeholder="✏️ Add student name…"
+               autocomplete="off" aria-required="true" />
+        <button id="add-btn" type="submit">➕ Add</button>
+      </form>
+      <div id="search-wrap">
+        <label for="search-input" class="sr-only">Search students</label>
+        <input id="search-input" type="search" placeholder="🔍 Search by name…"
+               autocomplete="off" aria-label="Search students by name" />
+      </div>
+    </div>
+
+    <div id="error-message" role="alert" aria-live="assertive"></div>
+    <ul id="student-list" aria-label="Student leaderboard" aria-live="polite"></ul>
+  </main>
+
+  <!-- Share toast -->
+  <div id="share-toast" role="status" aria-live="polite"></div>
+  <!-- Storage warning toast -->
+  <div id="storage-toast" role="alert" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
