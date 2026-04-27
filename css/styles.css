@@ -68,9 +68,10 @@ header {
 
 .header-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  text-align: center;
 }
 
 .header-title-group {
@@ -133,7 +134,8 @@ header h1 {
 
 main {
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
 /* ============================================================
@@ -142,10 +144,10 @@ main {
 
 #toolbar {
   display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 0.75rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+  margin-bottom: 1rem;
 }
 
 /* ============================================================
@@ -155,8 +157,7 @@ main {
 #add-form {
   display: flex;
   gap: 0.5rem;
-  flex: 1;
-  min-width: 16rem;
+  width: 100%;
 }
 
 #student-name {
@@ -205,8 +206,7 @@ main {
    ============================================================ */
 
 #search-wrap {
-  flex: 1;
-  min-width: 12rem;
+  width: 100%;
 }
 
 #search-input {
@@ -308,7 +308,8 @@ main {
    ============================================================ */
 
 .row-top {
-  display: flex;
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
   align-items: center;
   gap: 0.6rem;
   width: 100%;
@@ -320,16 +321,18 @@ main {
   flex-shrink: 0;
   min-width: 2rem;
   text-align: center;
+  grid-column: 1;
 }
 
 .student-name {
   font-weight: 700;
   font-size: 1.25rem;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
   flex-shrink: 0;
-  min-width: 12rem;
-  /* Negative margin pulls the badge area closer to the name */
-  margin-right: -0.3rem;
+  min-width: 0;
+  margin-right: 0;
+  grid-column: 2 / 4;
 }
 
 /* ============================================================
@@ -337,12 +340,17 @@ main {
    ============================================================ */
 
 .badge-area {
-  display: inline-flex;
-  flex-wrap: nowrap;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.25rem;
   align-items: center;
   flex-shrink: 0;
-  min-width: 6.8rem;
+  min-width: 0;
+  grid-column: 1 / 4;
+}
+
+.badge-area:empty {
+  display: none;
 }
 
 /* Individual badge pill */
@@ -440,7 +448,7 @@ main {
 
 .badge-picker-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.35rem;
 }
 
@@ -508,7 +516,8 @@ main {
   border-radius: 999px;
   overflow: hidden;
   min-width: 4rem;
-  margin-left: 2rem;
+  margin-left: 0;
+  grid-column: 1 / 3;
 }
 
 .progress-bar {
@@ -519,7 +528,6 @@ main {
   min-width: 4px;
 }
 
-/* Total points — pinned to the far right */
 .student-points {
   font-size: 1rem;
   font-weight: 800;
@@ -528,6 +536,7 @@ main {
   flex-shrink: 0;
   min-width: 4.5rem;
   text-align: right;
+  grid-column: 3;
 }
 
 /* ============================================================
@@ -733,4 +742,55 @@ main {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
   pointer-events: auto;
+}
+
+/* ============================================================
+   Media Queries (Mobile First)
+   ============================================================ */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  main {
+    padding: 1.5rem 2rem;
+  }
+  
+  .header-inner {
+    flex-direction: row;
+    text-align: left;
+    gap: 1.5rem;
+  }
+  
+  #toolbar {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  #add-form {
+    flex: 1;
+    min-width: 16rem;
+    width: auto;
+  }
+  
+  #search-wrap {
+    flex: 1;
+    min-width: 12rem;
+    width: auto;
+  }
+  
+
+  .badge-picker-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+  main {
+    max-width: 1200px;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+  }
 }
